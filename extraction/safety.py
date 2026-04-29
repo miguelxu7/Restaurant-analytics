@@ -2,8 +2,8 @@
 
 Keeps a running counter of Gemini calls made today, persisted at
 `extraction_cache/.daily_limit.json`. The counter resets automatically when the
-date changes. Limit is set conservatively under the Gemini 2.5 Flash free tier
-(~1500/day) so we never accidentally blow past it.
+date changes. Limit is set conservatively under the Gemini 2.5 Flash-Lite free
+tier (1000/day) with a 100-call buffer so we never accidentally blow past it.
 """
 
 from __future__ import annotations
@@ -12,7 +12,7 @@ import json
 from datetime import date
 from pathlib import Path
 
-DAILY_LIMIT = 1000
+DAILY_LIMIT = 900
 STATE_PATH = Path(__file__).resolve().parent.parent / "extraction_cache" / ".daily_limit.json"
 
 
